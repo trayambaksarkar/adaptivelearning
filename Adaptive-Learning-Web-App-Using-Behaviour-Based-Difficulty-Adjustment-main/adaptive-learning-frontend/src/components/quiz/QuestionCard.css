@@ -1,0 +1,234 @@
+/* ===================== QUESTION CARD ===================== */
+.question-card {
+  width: 100%;
+  padding: 50px 44px;
+  border-radius: 20px;
+  color: var(--text-color);
+  animation: fadeUp 0.5s ease;
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+
+  /* Glassy card — light */
+  background: rgba(255, 255, 255, 0.55);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  box-shadow:
+    0 8px 32px rgba(0, 0, 0, 0.07),
+    0 1px 0 rgba(255, 255, 255, 0.9) inset;
+}
+
+/* Glassy card — dark */
+body.dark-mode .question-card {
+  background: rgba(255, 255, 255, 0.04);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  box-shadow:
+    0 8px 40px rgba(0, 0, 0, 0.45),
+    0 1px 0 rgba(255, 255, 255, 0.06) inset;
+}
+
+/* QUESTION NUMBER */
+.question-number {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--subtext-color);
+  margin-bottom: 2px;
+}
+
+/* QUESTION TEXT */
+#questionText {
+  font-size: 26px;
+  line-height: 1.5;
+  font-weight: 700;
+  color: var(--text-color);
+}
+
+/* ===================== OPTIONS GRID ===================== */
+.options-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 14px;
+  margin-bottom: 10px;
+}
+
+/* ===================== OPTION BUTTONS ===================== */
+.option-btn {
+  padding: 18px 20px;
+  border-radius: 12px;
+  font-size: 14px;
+  font-family: inherit;
+  font-weight: 500;
+  cursor: pointer;
+  transition: border-color 0.2s ease, background 0.2s ease, transform 0.15s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  line-height: 1.4;
+
+  /* Glassy option — light */
+  background: rgba(255, 255, 255, 0.5);
+  border: 1.5px solid rgba(0, 0, 0, 0.08);
+  color: var(--text-color);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+body.dark-mode .option-btn {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1.5px solid rgba(255, 255, 255, 0.1);
+  color: var(--text-color);
+}
+
+/* Hover — light */
+body:not(.dark-mode) .option-btn:hover:not(.option-selected) {
+  border-color: var(--accent);
+  background: rgba(255, 77, 109, 0.08);
+  color: var(--accent);
+}
+
+/* Hover — dark */
+body.dark-mode .option-btn:hover:not(.option-selected) {
+  border-color: var(--accent);
+  background: rgba(56, 189, 248, 0.08);
+  color: var(--accent);
+}
+
+/* Selected — light: red fill */
+body:not(.dark-mode) .option-selected {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #fff;
+  box-shadow: 0 4px 14px rgba(255, 77, 109, 0.35);
+}
+
+/* Selected — dark: blue fill */
+body.dark-mode .option-selected {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #000;
+  box-shadow: 0 4px 14px rgba(56, 189, 248, 0.3);
+}
+
+.option-btn span {
+  display: block;
+  text-align: center;
+}
+
+/* ===================== HINT BOX ===================== */
+.hint-content {
+  padding: 16px 18px;
+  border-left: 3px solid var(--accent);
+  border-radius: 10px;
+  font-size: 14px;
+  line-height: 1.6;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+body:not(.dark-mode) .hint-content {
+  background: rgba(255, 77, 109, 0.07);
+  color: var(--text-color);
+}
+
+body.dark-mode .hint-content {
+  background: rgba(56, 189, 248, 0.07);
+  color: var(--text-color);
+}
+
+/* ===================== ACTION BUTTONS ===================== */
+.action-buttons {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.hint-btn,
+.next-btn {
+  padding: 11px 24px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 13px;
+  font-family: inherit;
+  letter-spacing: 0.02em;
+  transition: all 0.2s ease;
+}
+
+/* Hint — ghost outline */
+.hint-btn {
+  background: transparent;
+  border: 1.5px solid rgba(128, 128, 128, 0.25);
+  color: var(--text-color);
+}
+
+.hint-btn:hover,
+.hint-btn.active {
+  border-color: var(--accent);
+  color: var(--accent);
+  background: transparent;
+}
+
+/* Next — solid accent */
+.next-btn {
+  background: var(--accent);
+  border: 1.5px solid var(--accent);
+  color: #fff;
+  box-shadow: 0 4px 14px rgba(255, 77, 109, 0.3);
+}
+
+body.dark-mode .next-btn {
+  color: #000;
+  box-shadow: 0 4px 14px rgba(56, 189, 248, 0.25);
+}
+
+.next-btn:hover:not(.disabled) {
+  opacity: 0.88;
+  transform: translateY(-1px);
+}
+
+.next-btn.disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+/* ===================== ANIMATION ===================== */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ===================== RESPONSIVE ===================== */
+@media (max-width: 768px) {
+  .question-card {
+    padding: 30px 22px;
+  }
+
+  #questionText {
+    font-size: 21px;
+  }
+
+  .options-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .action-buttons {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .hint-btn,
+  .next-btn {
+    width: 100%;
+    text-align: center;
+    justify-content: center;
+  }
+}

@@ -1,0 +1,386 @@
+.webcam-stream {
+  position: relative;
+  width: 100%;
+  max-width: 640px;
+  margin: 0 auto;
+  background: #000;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+.video-container {
+  position: relative;
+  width: 100%;
+  padding-bottom: 56.25%; /* 16:9 aspect ratio */
+  background: #1a1a1a;
+}
+
+.webcam-video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 12px;
+  transition: opacity 0.3s ease;
+}
+
+.webcam-video.active {
+  opacity: 1;
+}
+
+/* Loading State */
+.loading-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.8);
+  color: white;
+  border-radius: 12px;
+  backdrop-filter: blur(10px);
+}
+
+.loading-spinner {
+  width: 40px;
+  height: 40px;
+  border: 3px solid rgba(255, 255, 255, 0.3);
+  border-top: 3px solid #3b82f6;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin-bottom: 16px;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.loading-overlay p {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+/* Error State */
+.error-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: rgba(239, 68, 68, 0.1);
+  color: #dc2626;
+  border-radius: 12px;
+  padding: 32px;
+  text-align: center;
+  backdrop-filter: blur(10px);
+}
+
+.error-icon {
+  font-size: 48px;
+  margin-bottom: 16px;
+}
+
+.error-overlay h3 {
+  margin: 0 0 8px 0;
+  font-size: 20px;
+  font-weight: 600;
+  color: #dc2626;
+}
+
+.error-overlay p {
+  margin: 0 0 24px 0;
+  font-size: 14px;
+  line-height: 1.5;
+  color: #7f1d1d;
+}
+
+.retry-button {
+  background: #dc2626;
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  min-width: 120px;
+}
+
+.retry-button:hover:not(:disabled) {
+  background: #b91c1c;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(220, 38, 38, 0.3);
+}
+
+.retry-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+.retry-hint {
+  margin: 8px 0 0 0;
+  font-size: 12px;
+  color: #991b1b;
+  font-style: italic;
+}
+
+/* Permission Prompt */
+.permission-prompt {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: rgba(59, 130, 246, 0.1);
+  color: #1e40af;
+  border-radius: 12px;
+  padding: 32px;
+  text-align: center;
+  backdrop-filter: blur(10px);
+}
+
+.camera-icon {
+  font-size: 48px;
+  margin-bottom: 16px;
+}
+
+.permission-prompt h3 {
+  margin: 0 0 8px 0;
+  font-size: 20px;
+  font-weight: 600;
+  color: #1e40af;
+}
+
+.permission-prompt p {
+  margin: 0 0 24px 0;
+  font-size: 14px;
+  line-height: 1.5;
+  color: #1e3a8a;
+}
+
+.allow-button {
+  background: #3b82f6;
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  min-width: 160px;
+}
+
+.allow-button:hover:not(:disabled) {
+  background: #2563eb;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+}
+
+.allow-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+/* Status Indicator */
+.status-indicator {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(0, 0, 0, 0.7);
+  color: white;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+  backdrop-filter: blur(10px);
+  z-index: 10;
+}
+
+.status-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #ef4444;
+  animation: pulse 2s infinite;
+}
+
+.status-dot.active {
+  background: #22c55e;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.5;
+    transform: scale(1.2);
+  }
+}
+
+/* Stream Info */
+.stream-info {
+  position: absolute;
+  bottom: 16px;
+  left: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  background: rgba(0, 0, 0, 0.7);
+  color: white;
+  padding: 8px 12px;
+  border-radius: 8px;
+  font-size: 11px;
+  font-family: monospace;
+  backdrop-filter: blur(10px);
+  z-index: 10;
+}
+
+.info-item {
+  opacity: 0.8;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .webcam-stream {
+    max-width: 100%;
+    margin: 0;
+    border-radius: 8px;
+  }
+  
+  .video-container {
+    padding-bottom: 75%; /* 4:3 aspect ratio for mobile */
+  }
+  
+  .error-overlay,
+  .permission-prompt {
+    padding: 24px;
+  }
+  
+  .error-icon,
+  .camera-icon {
+    font-size: 36px;
+  }
+  
+  .error-overlay h3,
+  .permission-prompt h3 {
+    font-size: 18px;
+  }
+  
+  .error-overlay p,
+  .permission-prompt p {
+    font-size: 13px;
+  }
+  
+  .retry-button,
+  .allow-button {
+    padding: 10px 20px;
+    font-size: 13px;
+  }
+  
+  .status-indicator {
+    top: 12px;
+    right: 12px;
+    font-size: 11px;
+  }
+  
+  .stream-info {
+    bottom: 12px;
+    left: 12px;
+    font-size: 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .error-overlay,
+  .permission-prompt {
+    padding: 16px;
+  }
+  
+  .error-icon,
+  .camera-icon {
+    font-size: 32px;
+  }
+  
+  .error-overlay h3,
+  .permission-prompt h3 {
+    font-size: 16px;
+  }
+  
+  .error-overlay p,
+  .permission-prompt p {
+    font-size: 12px;
+  }
+  
+  .retry-button,
+  .allow-button {
+    padding: 8px 16px;
+    font-size: 12px;
+    min-width: 100px;
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .webcam-stream {
+    border: 2px solid #000;
+  }
+  
+  .loading-overlay,
+  .error-overlay,
+  .permission-prompt {
+    backdrop-filter: none;
+  }
+  
+  .status-indicator,
+  .stream-info {
+    background: #000;
+    border: 1px solid #fff;
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  .loading-spinner,
+  .status-dot {
+    animation: none;
+  }
+  
+  .webcam-video,
+  .retry-button,
+  .allow-button {
+    transition: none;
+  }
+  
+  .retry-button:hover,
+  .allow-button:hover {
+    transform: none;
+  }
+}

@@ -1,0 +1,78 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&display=swap');
+
+/* ================= SIDEBAR ================= */
+.admin-sidebar {
+  width: 200px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 16px 12px;
+  position: fixed;
+  top: 50%;
+  transform: translateY(-50%);
+  left: 28px;
+  border-radius: 18px;
+  z-index: 10;
+  margin-left: 40px;
+  /* Glassy — light */
+  background: rgba(255, 255, 255, 0.55);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border: 1px solid rgba(255, 255, 255, 0.72);
+  box-shadow:
+    0 2px 0 rgba(255,255,255,0.9) inset,
+    0 8px 32px rgba(0,0,0,0.07);
+}
+
+body.dark-mode .admin-sidebar {
+  background: rgba(255, 255, 255, 0.035);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow:
+    0 1px 0 rgba(255,255,255,0.06) inset,
+    0 8px 32px rgba(0,0,0,0.4);
+}
+
+/* ================= LINKS ================= */
+.admin-sidebar a {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  text-decoration: none;
+  padding: 11px 16px;
+  border-radius: 10px;
+  text-align: left;
+  display: block;
+  transition: all 0.2s ease;
+
+  background: transparent;
+  border: 1.5px solid transparent;
+  color: var(--subtext-color);
+}
+
+/* Hover */
+.admin-sidebar a:hover {
+  background: rgba(128,128,128,0.07);
+  border-color: rgba(128,128,128,0.15);
+  color: var(--text-color);
+  transform: translateX(2px);
+}
+
+/* Active */
+.admin-sidebar a.active {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #fff;
+  box-shadow: 0 4px 14px rgba(255,77,109,0.3);
+}
+
+body.dark-mode .admin-sidebar a.active {
+  color: #000;
+  box-shadow: 0 4px 14px rgba(56,189,248,0.25);
+}
+
+body.dark-mode .admin-sidebar a:hover:not(.active) {
+  background: rgba(255,255,255,0.05);
+  border-color: rgba(255,255,255,0.1);
+  color: var(--text-color);
+}

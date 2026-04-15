@@ -1,0 +1,193 @@
+/* ================= GLOBAL STYLES ================= */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root,
+.App {
+  min-height: 100%;
+  width: 100%;
+  background-color: var(--bg-color); /* 🔥 FIX */
+  color: var(--text-color);
+}
+
+
+/* ================= LIGHT MODE TOKENS ================= */
+:root {
+  --bg-color: #ffffff;
+  --bg1: #ffffff;
+  --bg2: #fff1f2;
+
+  --text-color: #0f172a;
+  --text: #1e293b;
+
+  --nav-bg: #ffffff;
+  --nav-text: #111827;
+
+  --card-bg: #ffffff;
+  --features-bg: #fff1f2;
+
+  --heading-color: #111827;
+  --section-title: #ff4d6d;
+  --heading-light:#ffffff;
+  --subtext-color: #6b7280;
+
+  /* 🔴 CHERRY RED — primary accent */
+  --root: #ff2e63;
+  --accent: #ff4d6d;
+
+  --ai-blue: #2563eb;
+
+  --input-bg: #ffffff;
+
+  --team-bg: #fff1f2;
+  --team-card: #ffffff;
+  --team-card-border: rgba(0, 0, 0, 0.06);
+  --team-card-hover: #fff5f6;
+
+  --footer-bg: #ffffff;
+  --footer-text: #111827;
+
+  --glow: rgba(255, 46, 99, 0.25);
+
+  /* Glass system */
+  --glass-bg: rgba(15, 23, 42, 0.05);
+  --glass-border: rgba(196, 7, 7, 0.18);
+  --glass-strong: rgba(209, 7, 7, 0.45);
+
+  --ai-glow-soft: rgba(255, 77, 109, 0.12);
+  --ai-glow-mid: rgba(255, 77, 109, 0.3);
+  --ai-glow-strong: rgba(255, 77, 110, 0.25);
+
+
+}
+
+/* ================= DARK MODE — ULTRA BLACK + AI BLUE ================= */
+body.dark-mode , .dark-mode{
+  --bg-color: #000000;
+  --bg1: #000000;
+  --bg2: #000000;
+
+  --text-color: #f8fafc;
+  --text: #e2e8f0;
+
+  --nav-bg: rgba(0, 200, 255, 0.05);
+  --nav-text: #e0f7ff;
+
+  --navbar-bg: rgba(0, 200, 255, 0.08);
+
+  --card-bg: #060609;
+  --features-bg: #000000;
+
+  --heading-color: #ffffff;
+  --section-title: #38bdf8;
+
+  --subtext-color: #94a3b8;
+
+  /* 🔵 AI BLUE — primary accent in dark mode */
+  --root: #0ea5e9;
+  --accent: #38bdf8;
+  --ai-blue: #00c8ff;
+
+  --input-bg: #020617;
+
+  --team-bg: #000000;
+  --team-card: #020617;
+  --team-card-border: rgba(255, 255, 255, 0.06);
+  --team-card-hover: #020617;
+  --team-text: #e2e8f0;
+  --team-email: #94a3b8;
+
+  --footer-bg: #000000;
+  --footer-text: #f8fafc;
+  --footer-link: #94a3b8;
+  --footer-bottom: #e2e8f0;
+
+  --admin-bg: #000000;
+  --admin-color: #ffffff;
+  --admin-text: #ffffff;
+
+  --login-text: #ffffff;
+
+  --glow: rgba(0, 200, 255, 0.25);
+
+  /* Glass — dark */
+  --glass-bg: rgba(255, 255, 255, 0.04);
+  --glass-border: rgba(255, 255, 255, 0.08);
+  --glass-strong: rgba(255, 255, 255, 0.12);
+
+  --ai-glow-soft: rgba(0, 200, 255, 0.1);
+  --ai-glow-mid: rgba(0, 200, 255, 0.28);
+  --ai-glow-strong: rgba(0, 200, 255, 0.45);
+
+
+}
+
+/* ================= DEPTH SYSTEM ================= */
+.feature,
+.hero-feature,
+.team-card,
+.testimonial,
+.tilt-card,
+.floating-card {
+  border: 1px solid rgba(255, 255, 255, 0.04);
+}
+
+body.dark-mode .feature:hover,
+body.dark-mode .tilt-card:hover,
+body.dark-mode .floating-card:hover {
+  box-shadow: 0 10px 30px rgba(0, 200, 255, 0.12);
+}
+
+.feature:hover,
+.tilt-card:hover {
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+}
+
+/* ================= BUTTON ================= */
+
+
+/* ================= LOADING ================= */
+.loading-spinner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  font-size: 18px;
+  color: var(--text-color);
+  background: var(--bg-color);
+}
+
+.loading-spinner::after {
+  content: '';
+  width: 20px;
+  height: 20px;
+  margin-left: 10px;
+  border: 2px solid var(--accent);
+  border-top-color: transparent;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+/* ================= CURSOR DOT ================= */
+.cursor-dot {
+  position: fixed;
+  width: 12px;
+  height: 12px;
+  background-color: var(--accent);
+  border-radius: 50%;
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+  z-index: 9999;
+  transition: background-color 0.3s ease;
+}
+
+body.dark-mode .cursor-dot {
+  background-color: var(--ai-blue);
+}

@@ -1,0 +1,81 @@
+/* ================= FOOTER ================= */
+.footer {
+  position: relative;
+  padding: 40px 80px;
+
+  background: var(--glass-bg); /* translucent glass */
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+
+  border-top: 1px solid rgba(255, 255, 255, 0.2);;
+  /* border-radius: 16px; */
+
+  color: var(--footer-text);
+  transition: all 0.35s ease;
+}
+body.dark-mode {
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+/* CONTAINER */
+.footer-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+/* LEFT */
+.footer-left h3 {
+  color: var(--accent); /* theme-aware accent color */
+}
+
+/* LINKS */
+.footer-links {
+  display: flex;
+  gap: 20px;
+}
+
+.footer-links a {
+  color: var(--footer-link);
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.footer-links a:hover {
+  color: var(--accent);
+}
+
+/* RIGHT TEXT */
+.footer-right {
+  font-size: 14px;
+  color: var(--footer-bottom);
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .footer-container {
+    flex-direction: column;
+    gap: 20px;
+    text-align: center;
+  }
+}
+
+/* ================= DARK MODE ================= */
+body.dark-mode .footer {
+  background: var(--glass-bg-dark); /* slightly darker glass for dark mode */
+  border-color: var(--glass-border-dark);
+  color: var(--footer-text-dark);
+}
+
+body.dark-mode .footer-left h3,
+body.dark-mode .footer-links a:hover {
+  color: var(--ai-blue); /* accent in dark mode */
+}
+
+body.dark-mode .footer-links a {
+  color: var(--footer-link-dark);
+}
+
+body.dark-mode .footer-right {
+  color: var(--footer-bottom-dark);
+}

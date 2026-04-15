@@ -1,0 +1,283 @@
+.speaking-warning-overlay {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 1003;
+  max-width: 400px;
+  animation: slideInRight 0.3s ease-out;
+}
+
+.speaking-warning {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+  border-left: 4px solid #f59e0b;
+  overflow: hidden;
+  animation: slideInRight 0.3s ease-out;
+}
+
+.warning-content {
+  display: flex;
+  padding: 16px;
+  gap: 12px;
+}
+
+.warning-icon {
+  flex-shrink: 0;
+  display: flex;
+  align-items: flex-start;
+  padding-top: 4px;
+}
+
+.warning-details {
+  flex-grow: 1;
+}
+
+.warning-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+
+.warning-header h4 {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 600;
+  color: #1f2937;
+}
+
+.severity-badge {
+  background: #f59e0b;
+  color: white;
+  font-size: 10px;
+  font-weight: 600;
+  padding: 2px 6px;
+  border-radius: 4px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.warning-message {
+  margin: 0 0 8px 0;
+  font-size: 13px;
+  color: #4b5563;
+  line-height: 1.4;
+}
+
+.violation-info {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 8px;
+}
+
+.duration,
+.confidence {
+  font-size: 11px;
+  color: #6b7280;
+  font-weight: 500;
+}
+
+.warning-timestamp {
+  font-size: 10px;
+  color: #9ca3af;
+  font-style: italic;
+}
+
+.warning-actions {
+  background: #f9fafb;
+  padding: 12px 16px;
+  border-top: 1px solid #e5e7eb;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.auto-clear-timer {
+  display: flex;
+  align-items: center;
+}
+
+.timer-text {
+  font-size: 11px;
+  color: #6b7280;
+  font-style: italic;
+}
+
+.clear-warning-btn {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  background: #ef4444;
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-size: 11px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.clear-warning-btn:hover {
+  background: #dc2626;
+  transform: translateY(-1px);
+}
+
+/* Animations */
+@keyframes slideInRight {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .speaking-warning-overlay {
+    top: 10px;
+    right: 10px;
+    left: 10px;
+    max-width: none;
+  }
+  
+  .speaking-warning {
+    border-left-width: 3px;
+  }
+  
+  .warning-content {
+    padding: 12px;
+    gap: 10px;
+  }
+  
+  .warning-header h4 {
+    font-size: 13px;
+  }
+  
+  .severity-badge {
+    font-size: 9px;
+    padding: 1px 4px;
+  }
+  
+  .warning-message {
+    font-size: 12px;
+  }
+  
+  .duration,
+  .confidence {
+    font-size: 10px;
+  }
+  
+  .warning-actions {
+    padding: 10px 12px;
+  }
+  
+  .timer-text {
+    font-size: 10px;
+  }
+  
+  .clear-warning-btn {
+    padding: 5px 10px;
+    font-size: 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .speaking-warning-overlay {
+    top: 8px;
+    right: 8px;
+    left: 8px;
+  }
+  
+  .warning-content {
+    padding: 10px;
+    gap: 8px;
+  }
+  
+  .warning-header h4 {
+    font-size: 12px;
+  }
+  
+  .severity-badge {
+    font-size: 8px;
+    padding: 1px 3px;
+  }
+  
+  .warning-message {
+    font-size: 11px;
+  }
+  
+  .violation-info {
+    flex-direction: column;
+    gap: 4px;
+  }
+  
+  .duration,
+  .confidence {
+    font-size: 9px;
+  }
+  
+  .warning-actions {
+    padding: 8px 10px;
+    flex-direction: column;
+    gap: 8px;
+    align-items: stretch;
+  }
+  
+  .timer-text {
+    font-size: 9px;
+    text-align: center;
+  }
+  
+  .clear-warning-btn {
+    padding: 6px 8px;
+    font-size: 9px;
+    justify-content: center;
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .speaking-warning {
+    background: #000;
+    border-left-color: #fff;
+    box-shadow: 0 0 0 2px #fff;
+  }
+  
+  .warning-header h4 {
+    color: #fff;
+  }
+  
+  .warning-message {
+    color: #ccc;
+  }
+  
+  .warning-actions {
+    background: #111;
+    border-top-color: #fff;
+  }
+  
+  .timer-text {
+    color: #ccc;
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  .speaking-warning-overlay,
+  .speaking-warning {
+    animation: none;
+  }
+  
+  .clear-warning-btn {
+    transition: none;
+  }
+  
+  .clear-warning-btn:hover {
+    transform: none;
+  }
+}

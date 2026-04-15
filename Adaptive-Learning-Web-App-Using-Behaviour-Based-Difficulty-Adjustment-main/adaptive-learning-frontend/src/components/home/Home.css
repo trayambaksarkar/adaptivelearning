@@ -1,0 +1,15 @@
+.home {
+  min-height: 100vh;
+  /* background: white; */
+  overflow-x: hidden; /* Prevents horizontal scroll from GSAP shifts */
+}
+
+/* Smooth scrolling */
+.home {
+  scroll-behavior: smooth;
+}
+
+/* Navbar animation */
+.home .navbar {
+  animation: slideDown 0.8s ease-out;
+}

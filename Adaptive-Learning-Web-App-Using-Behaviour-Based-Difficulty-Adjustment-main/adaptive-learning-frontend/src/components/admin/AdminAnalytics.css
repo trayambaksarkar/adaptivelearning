@@ -1,0 +1,179 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap');
+
+/* ================= WRAPPER ================= */
+.analytics-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 12px 0 40px;
+  background: transparent;
+}
+
+/* ================= CARD ================= */
+.analytics-card {
+  margin-top: 250px;
+  display: flex;
+  width: min(900px, 96vw);
+  border-radius: 24px;
+  overflow: hidden;
+
+  /* Glassy — light */
+  background: rgba(255, 255, 255, 0.58);
+  backdrop-filter: blur(22px);
+  -webkit-backdrop-filter: blur(22px);
+  border: 1px solid rgba(255, 255, 255, 0.72);
+  box-shadow:
+    0 2px 0 rgba(255,255,255,0.9) inset,
+    0 16px 48px rgba(0,0,0,0.08);
+}
+
+body.dark-mode .analytics-card {
+  background: rgba(255, 255, 255, 0.035);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow:
+    0 1px 0 rgba(255,255,255,0.06) inset,
+    0 16px 48px rgba(0,0,0,0.45);
+}
+
+/* ================= LEFT PANEL ================= */
+.analytics-left-panel {
+  width: 32%;
+  background: var(--accent);
+  padding: 44px 32px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 20px;
+  flex-shrink: 0;
+}
+
+.analytics-left-panel h2 {
+  font-family: 'DM Serif Display', serif;
+  font-size: 28px;
+  font-weight: 400;
+  color: #fff;
+  letter-spacing: -0.3px;
+  line-height: 1.2;
+  margin: 0;
+}
+
+/* Stat pills */
+.analytics-left-panel p {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  color: rgba(255,255,255,0.85);
+  margin: 0;
+  padding: 10px 14px;
+  border-radius: 10px;
+  background: rgba(255,255,255,0.15);
+  border: 1px solid rgba(255,255,255,0.2);
+  line-height: 1.5;
+}
+
+/* ================= RIGHT PANEL ================= */
+.analytics-right-panel {
+  width: 68%;
+  padding: 28px 28px 28px 28px;
+  display: flex;
+  flex-direction: column;
+  overflow-x: auto;
+  background: transparent;
+}
+
+/* ================= TABLE CONTAINER ================= */
+.table-container {
+  width: 100%;
+  overflow-x: auto;
+  border-radius: 14px;
+  border: 1px solid rgba(128,128,128,0.12);
+  overflow: hidden;
+}
+
+/* ================= TABLE ================= */
+.analytics-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 13px;
+}
+
+/* Header */
+.analytics-table thead tr {
+  background: rgba(128,128,128,0.05);
+  border-bottom: 1px solid rgba(128,128,128,0.12);
+}
+
+.analytics-table th {
+  padding: 14px 16px;
+  text-align: center;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--subtext-color);
+}
+
+/* Body */
+.analytics-table td {
+  padding: 13px 16px;
+  text-align: center;
+  color: var(--text-color);
+  border-bottom: 1px solid rgba(128,128,128,0.08);
+  font-weight: 500;
+}
+
+/* Subject column — slightly bolder */
+.analytics-table td:first-child {
+  font-weight: 600;
+  color: var(--text-color);
+  text-align: left;
+}
+
+.analytics-table th:first-child {
+  text-align: left;
+}
+
+/* Last row no border */
+.analytics-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+/* Row hover */
+.analytics-table tbody tr {
+  transition: background 0.15s ease;
+}
+
+.analytics-table tbody tr:hover {
+  background: rgba(255,77,109,0.05);
+}
+
+body.dark-mode .analytics-table tbody tr:hover {
+  background: rgba(56,189,248,0.05);
+}
+
+/* ================= RESPONSIVE ================= */
+@media (max-width: 768px) {
+  .analytics-card {
+    flex-direction: column;
+  }
+
+  .analytics-left-panel,
+  .analytics-right-panel {
+    width: 100%;
+  }
+
+  .analytics-left-panel {
+    padding: 28px 24px;
+  }
+
+  .analytics-right-panel {
+    padding: 20px 16px;
+  }
+
+  .analytics-table th,
+  .analytics-table td {
+    padding: 10px 10px;
+    font-size: 12px;
+  }
+}

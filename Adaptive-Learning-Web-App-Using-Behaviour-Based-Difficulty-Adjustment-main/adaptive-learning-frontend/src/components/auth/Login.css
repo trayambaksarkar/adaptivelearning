@@ -1,0 +1,319 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap');
+
+/* ══ SHELL ══ */
+.page-content {
+  font-family: 'Inter', sans-serif;
+  min-height: 100vh;
+  background: var(--bg-color);
+  color: var(--text-color);
+}
+
+/* ══ WRAPPER ══ */
+.auth-wrapper {
+  margin-top: 100px;
+  height:100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  position: relative;
+  /* overflow: hidden; */
+}
+
+/* ── Grid pattern with radial fade ── */
+.auth-wrapper::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image:
+    linear-gradient(var(--grid-line) 3px, transparent 2px),
+    linear-gradient(90deg, var(--grid-line) 3px, transparent 2px);
+  background-size: 48px 48px;
+  -webkit-mask-image: radial-gradient(ellipse 70% 70% at 50% 50%, black 30%, transparent 80%);
+  mask-image: radial-gradient(ellipse 70% 70% at 50% 50%, black 30%, transparent 80%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+:root {
+  --grid-line: rgba(0, 0, 0, 0.15);
+}
+  
+body.dark-mode {
+  --grid-line: rgba(255, 255, 255, 0.658);
+}
+
+/* no other pseudo */
+.auth-wrapper::after { display: none; }
+
+/* ══ HIDE LEFT PANEL ══ */
+.left-panel { display: none; }
+
+/* ══ RIGHT PANEL ══ */
+.right-panel {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 380px;
+  overflow: visible;
+}
+
+/* ══ FORM ══ */
+.login-form {
+  /* margin-top: 100px; */
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  height: 800px;
+}
+
+/* Brand */
+.login-form::before {
+  content: 'EduSip';
+  display: block;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--accent);
+  text-align: center;
+  margin-bottom: 28px;
+}
+
+/* Heading */
+form h2 {
+  font-size: 28px;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  color: var(--heading-color);
+  margin-bottom: 6px;
+  text-align: center;
+  font-family: 'Inter', sans-serif;
+}
+
+.form-subtitle {
+  font-size: 13px;
+  font-weight: 300;
+  color: var(--subtext-color);
+  text-align: center;
+  line-height: 1.6;
+  margin-bottom: 32px;
+}
+
+/* ── Fields ── */
+.field-group { margin-bottom: 12px; }
+
+form input[type="email"],
+form input[type="password"],
+form input[type="text"] {
+  width: 100%;
+  padding: 13px 16px;
+  border: 1px solid var(--glass-border);
+  border-radius: 8px;
+  background: var(--bg-color);
+  color: var(--text-color);
+  font-family: 'Inter', sans-serif;
+  font-size: 13.5px;
+  font-weight: 400;
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  margin-bottom: 0;
+}
+
+form input::placeholder {
+  color: var(--subtext-color);
+  opacity: 0.5;
+}
+
+form input:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--ai-glow-soft);
+}
+
+/* ── Password ── */
+.password-box { position: relative; }
+.password-box input { padding-right: 44px; }
+
+.password-toggle {
+  position: absolute;
+  right: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  color: var(--subtext-color);
+  font-size: 14px;
+  user-select: none;
+  transition: color 0.2s;
+}
+.password-toggle:hover { color: var(--accent); }
+
+/* ── Forgot ── */
+.forgot-link {
+  display: block;
+  text-align: right;
+  font-size: 12px;
+  font-weight: 400;
+  color: var(--subtext-color);
+  text-decoration: none;
+  margin-top: 8px;
+  transition: color 0.2s;
+}
+.forgot-link:hover { color: var(--accent); }
+
+/* ── Login button ── */
+.login-btn {
+  width: 100%;
+  margin-top: 22px;
+  padding: 13px;
+  border: none; /* remove any border */
+  border-radius: 8px;
+  background: var(--accent);
+  color: #fff;
+  font-family: 'Inter', sans-serif;
+  font-size: 13.5px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: opacity 0.2s, transform 0.2s;
+}
+
+body.dark-mode .login-btn {
+  border: none; /* make sure no border appears in dark mode */
+  background: var(--accent);
+  color: #000;
+}
+
+/* Light + Dark mode hover effect */
+.login-btn:hover {
+  opacity: 0.85;
+  transform: translateY(-1px);
+  /* optional: keep background same as normal in dark mode */
+}
+
+/* Dark mode hover (if you want a slightly different effect) */
+body.dark-mode .login-btn:hover {
+  opacity: 0.85;
+  transform: translateY(-1px);
+  /* background: var(--accent);  optional if you want same as normal */
+}
+/* ── Divider ── */
+.divider {
+  display: flex;
+  align-items: center;
+  margin: 20px 0;
+  font-size: 11px;
+  color: var(--subtext-color);
+  gap: 12px;
+  letter-spacing: 0.08em;
+}
+
+.divider::before,
+.divider::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--glass-border);
+}
+
+/* If you have a <span> inside the divider */
+.divider span {
+  color: var(--section-title); /* Will automatically adapt to dark mode if --subtext-color changes */
+}
+
+/* Dark mode overrides */
+body.dark-mode .divider span {
+  color: var(--section-title); /* Ensure your --subtext-color in dark mode is defined */
+}
+/* ── LIGHT MODE GOOGLE BUTTON ── */
+.google-btn {
+  width: 100%;
+  padding: 12px;
+  background: rgba(239, 68, 68, 0.2);       /* persistent red glass background */
+  backdrop-filter: blur(8px);               /* frosted glass effect */
+  -webkit-backdrop-filter: blur(8px);       /* Safari support */
+  border: 1px solid rgba(239, 68, 68, 0.4); /* red border */
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  cursor: pointer;
+  font-family: 'Inter', sans-serif;
+  font-size: 13px;
+  font-weight: 400;
+  color: #ef4444;                            /* red text/icon */
+  margin-bottom: 10px;
+  transition: all 0.3s ease;
+}
+
+/* Hover effect - soft shadow and slight glow */
+.google-btn:hover {
+  background: rgba(239, 68, 68, 0.25);       /* slightly stronger opacity on hover */
+  box-shadow: 0 4px 12px rgba(239, 68, 68, 0.25); /* soft glow on hover */
+  transform: translateY(-1px);
+  border:1px solid red;
+}
+
+/* Image size */
+.google-btn img {
+  width: 15px;
+  transition: filter 0.3s ease;
+}
+
+/* ── DARK MODE GOOGLE BUTTON ── */
+body.dark-mode .google-btn {
+  background: rgba(59, 130, 246, 0.2);      /* blue glass background */
+  border: 1px solid rgba(59, 130, 246, 0.4); /* blue border */
+  color: #fff;                               /* white text/icon */
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  transition: all 0.3s ease;
+}
+
+/* Hover effect - dark mode */
+body.dark-mode .google-btn:hover {
+  background: rgba(59, 130, 246, 0.35);     /* slightly stronger blue */
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+  transform: translateY(-1px);
+}
+
+/* Dark mode icon color adjustment */
+body.dark-mode .google-btn img {
+  filter: hue-rotate(200deg); /* shifts red icon to blue */
+}
+/* ── Error ── */
+.error-message {
+  border-left: 2px solid #ef4444;
+  color: #ef4444;
+  padding: 8px 12px;
+  margin-bottom: 14px;
+  font-size: 13px;
+  font-weight: 400;
+  background: transparent;
+  border-radius: 0;
+}
+
+/* ── Footer text ── */
+.auth-footer-text {
+  margin-top: 14px;
+  text-align: center;
+  font-size: 12px;
+  font-weight: 400;
+  color: var(--subtext-color);
+}
+
+.auth-footer-text a,
+form a {
+  color: var(--accent);
+  text-decoration: none;
+  font-weight: 500;
+}
+.auth-footer-text a:hover,
+form a:hover { text-decoration: underline; }
+
+.switch-btn { display: none; }
+
+/* ══ MOBILE ══ */
+@media (max-width: 480px) {
+  .auth-wrapper { padding: 40px 20px; }
+  form h2 { font-size: 24px; }
+}

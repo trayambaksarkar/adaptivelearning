@@ -1,0 +1,344 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap');
+
+/* ══ SHELL ══ */
+.page-content {
+  font-family: 'Inter', sans-serif;
+  min-height: 100vh;
+  background: var(--bg-color);
+  color: var(--text-color);
+}
+
+/* ══ WRAPPER ══ */
+.reg-wrapper {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 60px 20px;
+  position: relative;
+  overflow: hidden;
+}
+
+/* ── Grid pattern with radial fade ── */
+.reg-wrapper::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image:
+    linear-gradient(var(--grid-line) 2px, transparent 2px),
+    linear-gradient(90deg, var(--grid-line) 2px, transparent 2px);
+  background-size: 48px 48px;
+  -webkit-mask-image: radial-gradient(ellipse 70% 70% at 50% 50%, black 30%, transparent 80%);
+  mask-image: radial-gradient(ellipse 70% 70% at 50% 50%, black 30%, transparent 80%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+:root {
+  --grid-line: rgba(0, 0, 0, 0.08);
+}
+body.dark-mode {
+  --grid-line: rgba(255, 255, 255, 0.08);
+}
+
+.auth-wrapper::after { display: none; }
+
+/* ══ HIDE LEFT PANEL ══ */
+.left-panel { display: none !important; }
+.auth-card { all: unset; display: contents; }
+.register-card { all: unset; display: contents; }
+
+/* ══ RIGHT PANEL ══ */
+.right-panel {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 400px;
+}
+
+/* ══ FORM ══ */
+.right-panel form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  font-family: 'Inter', sans-serif;
+}
+
+/* Brand */
+.right-panel form::before {
+  content: 'EduSip';
+  display: block;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--accent);
+  text-align: center;
+  margin-bottom: 28px;
+}
+
+/* Heading */
+.right-panel form h2 {
+  font-size: 28px;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  color: var(--heading-color);
+  margin-bottom: 6px;
+  text-align: center;
+  font-family: 'Inter', sans-serif;
+}
+
+.form-subtitle {
+  font-size: 13px;
+  font-weight: 300;
+  color: var(--subtext-color);
+  text-align: center;
+  line-height: 1.6;
+  margin-bottom: 28px;
+}
+
+/* ── Role selector — shown first ── */
+.role-select {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-bottom: 24px;
+}
+
+.role-option {
+  position: relative;
+}
+
+.role-option input[type="radio"] {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.role-option label {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  padding: 11px 14px;
+  border: 1px solid var(--glass-border);
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 400;
+  color: var(--subtext-color);
+  transition: border-color 0.2s, color 0.2s, background 0.2s;
+  user-select: none;
+}
+
+.role-option input[type="radio"]:checked + label {
+  border-color: var(--accent);
+  color: var(--accent);
+  background: var(--ai-glow-soft);
+  font-weight: 500;
+}
+
+/* ── All text inputs & textarea ── */
+.right-panel form input[type="text"],
+.right-panel form input[type="email"],
+.right-panel form input[type="password"],
+.right-panel form textarea {
+  width: 100%;
+  padding: 13px 16px;
+  border: 1px solid var(--glass-border);
+  border-radius: 8px;
+  background: var(--bg-color);
+  color: var(--text-color);
+  font-family: 'Inter', sans-serif;
+  font-size: 13.5px;
+  font-weight: 400;
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  margin-bottom: 12px;
+  resize: none;
+}
+
+.right-panel form input::placeholder,
+.right-panel form textarea::placeholder {
+  color: var(--subtext-color);
+  opacity: 0.5;
+}
+
+.right-panel form input:focus,
+.right-panel form textarea:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--ai-glow-soft);
+}
+
+/* ── Skills ── */
+.skills-input-container {
+  margin-bottom: 12px;
+}
+
+.skills-input-container input {
+  margin-bottom: 8px !important;
+}
+
+.skills-preview {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+  min-height: 0;
+}
+
+.skill-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  background: var(--ai-glow-soft);
+  border: 1px solid var(--glass-border);
+  color: var(--text-color);
+  font-size: 12px;
+  font-weight: 400;
+  padding: 4px 10px;
+  border-radius: 100px;
+}
+
+.skill-chip button {
+  all: unset;
+  cursor: pointer;
+  color: var(--subtext-color);
+  font-size: 14px;
+  line-height: 1;
+  transition: color 0.15s;
+}
+
+.skill-chip button:hover { color: var(--accent); }
+
+/* ── Submit button ── */
+.right-panel form button[type="submit"] {
+  width: 100%;
+  margin-top: 10px;
+  padding: 13px;
+  border: none;
+  border-radius: 8px;
+  background: var(--accent);
+  color: #fff;
+  font-family: 'Inter', sans-serif;
+  font-size: 13.5px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: opacity 0.2s, transform 0.2s;
+  margin-bottom: 0;
+}
+
+body.dark-mode .right-panel form button[type="submit"] {
+  color: #000;
+}
+
+.right-panel form button[type="submit"]:hover {
+  opacity: 0.85;
+  transform: translateY(-1px);
+}
+
+/* ── Divider ── */
+.divider {
+  display: flex;
+  align-items: center;
+  margin: 20px 0;
+  font-size: 11px;
+  color: var(--subtext-color);
+  gap: 12px;
+  letter-spacing: 0.08em;
+}
+
+.divider::before,
+.divider::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--glass-border);
+}
+
+/* ── Google button ── */
+.google-btn {
+  width: 100%;
+  padding: 12px;
+  background: transparent;
+  border: 1px solid var(--glass-border);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  cursor: pointer;
+  font-family: 'Inter', sans-serif;
+  font-size: 13px;
+  font-weight: 400;
+  color: var(--text-color);
+  transition: border-color 0.2s, background 0.2s;
+}
+
+.google-btn:hover {
+  border-color: var(--accent);
+  background: var(--glass-bg);
+  color: black;
+}
+
+.google-btn img { width: 15px; }
+
+body.dark-mode .google-btn {
+  background: rgba(59, 130, 246, 0.2);      /* blue glass background */
+  border: 1px solid rgba(59, 130, 246, 0.4); /* blue border */
+  color: #fff !important;                               /* white text/icon */
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  transition: all 0.3s ease;
+}
+register-card {
+  max-height: 90vh;     /* 👈 important */
+  overflow-y: auto;     /* 👈 scroll ONLY inside card */
+  border-radius: 16px;
+}
+
+/* Hover effect - dark mode */
+body.dark-mode .google-btn:hover {
+  background: rgba(59, 130, 246, 0.35);     /* slightly stronger blue */
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+  transform: translateY(-1px);
+}
+
+/* Dark mode icon color adjustment */
+body.dark-mode .google-btn img {
+  filter: hue-rotate(200deg); /* shifts red icon to blue */
+}
+/* ── Error ── */
+.error-message {
+  border-left: 2px solid #ef4444;
+  color: #ef4444;
+  padding: 8px 12px;
+  margin-bottom: 14px;
+  font-size: 13px;
+  font-weight: 400;
+  background: transparent;
+  border-radius: 0;
+}
+
+/* ── Footer text ── */
+.auth-footer-text {
+  margin-top: 14px;
+  text-align: center;
+  font-size: 12px;
+  font-weight: 400;
+  color: var(--subtext-color);
+}
+
+.auth-footer-text a {
+  color: var(--accent);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.auth-footer-text a:hover { text-decoration: underline; }
+
+/* ══ MOBILE ══ */
+@media (max-width: 480px) {
+  .auth-wrapper { padding: 40px 20px; }
+  .right-panel form h2 { font-size: 24px; }
+}

@@ -1,0 +1,19 @@
+body {
+  margin: 0;
+  font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI',
+    'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans',
+    'Droid Sans', 'Helvetica Neue', sans-serif;
+
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  /* ❌ REMOVE THIS */
+  /* background: #ffffff; */
+  /* color: #111; */
+
+  /* ✅ USE THEME VARIABLES */
+  background: var(--bg-color);
+  color: var(--text-color);
+
+  transition: 0.4s;
+}

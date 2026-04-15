@@ -1,0 +1,267 @@
+.audio-indicator {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  background: rgba(0, 0, 0, 0.9);
+  backdrop-filter: blur(10px);
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  border-radius: 12px;
+  padding: 12px 16px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  z-index: 1002;
+  min-width: 180px;
+  animation: slideInLeft 0.3s ease-out;
+}
+
+.audio-status {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-grow: 1;
+}
+
+.audio-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #6b7280;
+  animation: pulse 2s infinite;
+  flex-shrink: 0;
+}
+
+.audio-dot[data-status="disabled"] {
+  background: #6b7280;
+  opacity: 0.5;
+}
+
+.audio-dot[data-status="speaking"] {
+  background: #ef4444;
+  animation: pulse 0.5s infinite;
+}
+
+.audio-dot[data-status="active"] {
+  background: #22c55e;
+}
+
+.audio-dot[data-status="initializing"] {
+  background: #f59e0b;
+  animation: pulse 1s infinite;
+}
+
+.audio-dot[data-status="error"] {
+  background: #ef4444;
+}
+
+.audio-icon {
+  font-size: 14px;
+  flex-shrink: 0;
+}
+
+.audio-text {
+  font-size: 11px;
+  color: white;
+  font-weight: 600;
+  flex-grow: 1;
+}
+
+.audio-violations {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(239, 68, 68, 0.9);
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+}
+
+.violation-count {
+  color: white;
+  font-size: 10px;
+  font-weight: 700;
+  animation: pulse 2s infinite;
+}
+
+.speaking-waves {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  background: rgba(239, 68, 68, 0.9);
+  padding: 4px 6px;
+  border-radius: 6px;
+}
+
+.wave {
+  width: 2px;
+  height: 8px;
+  background: white;
+  border-radius: 1px;
+  animation: wave 0.5s ease-in-out infinite;
+}
+
+.wave:nth-child(1) { animation-delay: 0s; }
+.wave:nth-child(2) { animation-delay: 0.1s; }
+.wave:nth-child(3) { animation-delay: 0.2s; }
+.wave:nth-child(4) { animation-delay: 0.3s; }
+.wave:nth-child(5) { animation-delay: 0.4s; }
+
+/* Animations */
+@keyframes slideInLeft {
+  from {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.7;
+    transform: scale(1.2);
+  }
+}
+
+@keyframes wave {
+  0%, 100% {
+    height: 8px;
+  }
+  50% {
+    height: 2px;
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .audio-indicator {
+    bottom: 10px;
+    right: 10px;
+    min-width: 160px;
+    padding: 10px 12px;
+  }
+  
+  .audio-dot {
+    width: 6px;
+    height: 6px;
+  }
+  
+  .audio-icon {
+    font-size: 12px;
+  }
+  
+  .audio-text {
+    font-size: 10px;
+  }
+  
+  .audio-violations {
+    width: 18px;
+    height: 18px;
+  }
+  
+  .violation-count {
+    font-size: 9px;
+  }
+  
+  .speaking-waves {
+    top: -6px;
+    right: -6px;
+    padding: 3px 5px;
+  }
+  
+  .wave {
+    width: 1.5px;
+    height: 6px;
+  }
+}
+
+@media (max-width: 480px) {
+  .audio-indicator {
+    bottom: 8px;
+    right: 8px;
+    min-width: 140px;
+    padding: 8px 10px;
+  }
+  
+  .audio-dot {
+    width: 5px;
+    height: 5px;
+  }
+  
+  .audio-icon {
+    font-size: 11px;
+  }
+  
+  .audio-text {
+    font-size: 9px;
+  }
+  
+  .audio-violations {
+    width: 16px;
+    height: 16px;
+  }
+  
+  .violation-count {
+    font-size: 8px;
+  }
+  
+  .speaking-waves {
+    top: -5px;
+    right: -5px;
+    padding: 2px 4px;
+  }
+  
+  .wave {
+    width: 1px;
+    height: 4px;
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .audio-indicator {
+    background: #000;
+    border: 3px solid #fff;
+  }
+  
+  .audio-violations {
+    background: #000;
+    border: 2px solid #fff;
+  }
+  
+  .speaking-waves {
+    background: #000;
+    border: 2px solid #fff;
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  .audio-indicator,
+  .audio-dot,
+  .violation-count,
+  .wave {
+    animation: none;
+  }
+}
